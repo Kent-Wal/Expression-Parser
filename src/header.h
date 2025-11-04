@@ -52,11 +52,11 @@ void calculate(struct Node *root,  char *variables);
 void calculateTree(struct Node *root, HashMap *map);
 
 //heap functions
-struct HeapNode **newHeap(void);
-void readFile(FILE *file, struct HeapNode **heap);
-void createHeapTree(struct HeapNode **heap);
+struct HeapNode **newHeap(int size);
+void readFile(FILE *file, struct HeapNode **heap, int size);
+void createHeapTree(struct HeapNode **heap, int size);
 void downHeap(struct HeapNode **heap, int nodeIndex, int size);
-void printHeap(struct HeapNode **heap);
-void freeHeap(struct HeapNode **heap);
+void printHeap(struct HeapNode **heap, int size);
+void freeHeap(struct HeapNode **heap, int size);
 
 #endif
