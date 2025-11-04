@@ -36,4 +36,14 @@ run "make cleaner" to delete the object and executable files
 > **Note:** I included a sample data file that can be used for testing but any data file can be used as long as it satisfies the given parameters listed above
 
 ## What I Learned
-This project really expanded my knowledge on how binary trees and heaps work and also the similarities they have with eachother.
+**Binary Tree Traversals:** I gained hands-on experience implementing the three main tree traversal algorithms (inorder, preorder, and postorder). Understanding when and why to use each traversal method was crucial, especially when working with arithmetic expressions where the order of operations matters.
+
+**Expression Parsing:** Building a binary tree from an arithmetic expression string taught me about parsing algorithms and how compilers interpret mathematical expressions.
+
+**Recursive Algorithms:** Both the tree traversal methods and the calculation function rely heavily on recursion. This project strengthened my understanding of recursive thinking and how to build solutions that work their way down a tree structure and build results on the way back up.
+
+**Heap Data Structures:** Implementing the heap operations, particularly the percolate down algorithm for converting to a max-heap, deepened my understanding of how heaps maintain their properties. I learned how heaps are different from binary search trees yet share the same underlying tree structure.
+
+**Memory Management:** Working in C required careful attention to dynamic memory allocation and deallocation, ensuring no memory leaks occur when building and manipulating tree structures.
+
+**Testing and Debugging:** Debugging tree structures and ensuring correct evaluation of complex expressions taught me the importance of systematic testing and visualization of data structures during development.
