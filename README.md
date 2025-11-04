@@ -11,18 +11,18 @@ The second part of this project uses a heap to take in some set of data by readi
 
 ## Build Instructions
 First clone the git repository using "git clone" and then "cd" into the repo. From there run "make all" to compile all the source files. To run each program follow the list below:  
-    -Inorder: ./bin/inorder '...'  
-    -Preorder: ./bin/preorder '...'  
-    -Postorder: ./bin/postorder '...'  
-    -Calculate: ./bin/calculate '...' '...'  
-    -Heap: ./bin/heap '<'File Path'>'
+-Inorder: ./bin/inorder '...'  
+-Preorder: ./bin/preorder '...'  
+-Postorder: ./bin/postorder '...'  
+-Calculate: ./bin/calculate '...' '...'  
+-Heap: ./bin/heap '<'File Path'>'
 
-    **Note:**  
-    For the inorder, preorder and postorder file they are expecting some arithmetic expression surrounded by singe quotes and and also surrounded by a set of brackets  
-    &emsp;ex. '(((x1+5.88)*(x2-7.62))/x3)'
+**Note:**  
+For the inorder, preorder and postorder file they are expecting some arithmetic expression surrounded by singe quotes and and also surrounded by a set of brackets  
+&emsp;ex. '(((x1+5.88)*(x2-7.62))/x3)'
 
-    For the calculate file it is expecting some arithmetic expression with the same requirements as above and also a set of variables surrounded by single quotes in the following form
-    &emsp;ex. 'x1=2;x2=4.32;x3=9.3'
+For the calculate file it is expecting some arithmetic expression with the same requirements as above and also a set of variables surrounded by single quotes in the following form
+&emsp;ex. 'x1=2;x2=4.32;x3=9.3'
 
 run "make clean" to delete the object files  
 run "make cleaner" to delete the object and executable files
