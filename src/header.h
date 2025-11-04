@@ -53,7 +53,7 @@ void calculateTree(struct Node *root, HashMap *map);
 
 //heap functions
 struct HeapNode **newHeap(int size);
-void readFile(FILE *file, struct HeapNode **heap, int size);
+void readFile(FILE *file, struct HeapNode **heap, int size, int totalIntegers);
 void createHeapTree(struct HeapNode **heap, int size);
 void downHeap(struct HeapNode **heap, int nodeIndex, int size);
 void printHeap(struct HeapNode **heap, int size);

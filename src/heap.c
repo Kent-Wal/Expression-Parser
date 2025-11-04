@@ -21,21 +21,22 @@ int main(int argc, char *argv[]){
         count++;
     }
     
-    //check if the count is valid (must be divisible by 10)
-    if(count % 10 != 0){
-        fprintf(stderr, "File does not contain a multiple of 10 integers.\n");
+    //check if there are at least 3 integers (minimum needed for a key)
+    if(count < 3){
+        fprintf(stderr, "Error: File must contain at least 3 integers to calculate a key.\n");
         fclose(file);
         return 1;
     }
     
-    int heapSize = count / 10;
+    //calculate heap size (round up to handle partial nodes)
+    int heapSize = (count + 9) / 10;  // equivalent to ceil(count/10)
     
     //rewind file to beginning for reading
     rewind(file);
 
     //declare variables
     struct HeapNode **heap = newHeap(heapSize);
-    readFile(file, heap, heapSize);
+    readFile(file, heap, heapSize, count);
 
     //function calls
     createHeapTree(heap, heapSize);
@@ -78,22 +79,31 @@ struct HeapNode **newHeap(int size){
 }
 
 
-void readFile(FILE *file, struct HeapNode **heap, int size){
+void readFile(FILE *file, struct HeapNode **heap, int size, int totalIntegers){
     int num;
+    int integersRead = 0;
+    
     for(int i = 0; i < size; i++){
         for(int j = 0; j < 10; j++){
-            if(fscanf(file, "%d", &num) != 1){
-                fprintf(stderr, "Error reading file: insufficient integers.\n");
+            //check if we've read all available integers
+            if(integersRead >= totalIntegers){
+                //pad remaining slots with 0
+                heap[i]->data[j] = 0;
+            }
+            else if(fscanf(file, "%d", &num) != 1){
+                fprintf(stderr, "Error reading file: unexpected end of file.\n");
                 freeHeap(heap, size);
                 exit(-2);
             }
-
-            //find the key
-            if(j < 3){
-                heap[i]->key += num;
+            else{
+                //find the key (sum of first 3 integers)
+                if(j < 3){
+                    heap[i]->key += num;
+                }
+                //store the values
+                heap[i]->data[j] = num;
+                integersRead++;
             }
-            //store the values
-            heap[i]->data[j] = num;
         }
     }
     return;
@@ -152,9 +162,12 @@ void downHeap(struct HeapNode **heap, int nodeIndex, int size){
 void printHeap(struct HeapNode **heap, int size){
     for(int i = 0; i < size; i++){
         for(int j = 0; j < 10; j++){
-            printf("%02d ", heap[i]->data[j]);
+            //only print if not a padding zero (or if it's an actual data zero)
+            if(heap[i]->data[j] != 0 || j < 3){
+                printf("%02d ", heap[i]->data[j]);
+            }
         }
-        printf("\b\n");
+        printf("\n");
     }
     return;
 }
