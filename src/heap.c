@@ -1,8 +1,14 @@
 #include "header.h"
 
-int main(void){
+int main(int argc, char *argv[]){
+    //check if filename was provided
+    if(argc != 2){
+        fprintf(stderr, "Usage: %s <data_file>\n", argv[0]);
+        return 1;
+    }
+    
     //open .dat file
-    FILE *file = fopen("src/f.dat", "r");
+    FILE *file = fopen(argv[1], "r");
     if(file == NULL){
         perror("Could not open file");
         return 1;
